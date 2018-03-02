@@ -14,11 +14,22 @@ import org.jsoup.nodes.Document;
  * @author danmun
  */
 public class Scraper {
+    
+    private static int timeout = 600000;
+    
     public static Document scrapeHTML(String URL) throws IOException{
-        return Jsoup.connect(URL).maxBodySize(0).timeout(600000).get();
+        return Jsoup.connect(URL).maxBodySize(0).timeout(timeout).get();
     }
     
     public static String scrapeOther(String URL) throws IOException{
         return Jsoup.connect(URL).ignoreContentType(true).execute().body();
+    }
+    
+    public static void setTimeout(int time){
+        timeout = time;
+    }
+    
+    public static int getTimeout(){
+        return timeout;
     }
 }
