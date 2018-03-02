@@ -5,7 +5,7 @@
  */
 package coinmarketcapscraper;
 
-import coinmarketcapscraper.listentries.TopXCoinsListEntry;
+import coinmarketcapscraper.listentries.Top100CoinsListEntry;
 import coinmarketcapscraper.connection.Scraper;
 import java.io.IOException;
 
@@ -19,7 +19,7 @@ public class CoinMarketCap {
     
     private GlobalStats globalStats;
 
-    private TopXCoinsListEntry[] coinList;
+    private Top100CoinsListEntry[] coinList;
     
     private String twitter;
     private String facebook;
@@ -32,11 +32,11 @@ public class CoinMarketCap {
         this.globalStats = globalStats;
     }
 
-    public TopXCoinsListEntry[] getCoinList() {
+    public Top100CoinsListEntry[] getTop100CoinList() {
         return coinList;
     }
 
-    public void setCoinList(TopXCoinsListEntry[] coinList) {
+    public void setCoinList(Top100CoinsListEntry[] coinList) {
         this.coinList = coinList;
     }
 
@@ -77,12 +77,12 @@ public class CoinMarketCap {
         org.jsoup.nodes.Element table = doc.body().getElementById("currencies").children().last();
         org.jsoup.select.Elements rows = table.getElementsByTag("tr");
         CoinMarketCap cmc = new CoinMarketCap();
-        cmc.coinList = new TopXCoinsListEntry[rows.size()];
+        cmc.coinList = new Top100CoinsListEntry[rows.size()];
         for(int i = 0; i < cmc.coinList.length; i++){
             org.jsoup.nodes.Element row = rows.get(i);
             org.jsoup.select.Elements coloumns = row.children();
             
-            TopXCoinsListEntry entry = new TopXCoinsListEntry();
+            Top100CoinsListEntry entry = new Top100CoinsListEntry();
             
             entry.setRank(Integer.parseInt(coloumns.first().text()));
             entry.setCoinName(coloumns.get(1).children().last().text());

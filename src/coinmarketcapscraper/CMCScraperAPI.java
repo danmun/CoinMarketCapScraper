@@ -19,7 +19,8 @@ public class CMCScraperAPI {
      */
     public static void main(String[] args) throws IOException {
         CoinMarketCap cmc = CoinMarketCap.browse();
-        Coin coin = cmc.getCoinList()[5].getCoin();
+        Coin coin = cmc.getTop100CoinList()[5].getCoin();
+        p(cmc.getTop100CoinList().length);
         p("-----#" + coin.getRank() + "--------" + coin.getName() + "----------------");
         for(String site : coin.getWebsites()){ p(site); }
         for(String ann : coin.getAnnouncements()) { p(ann); }
@@ -35,11 +36,11 @@ public class CMCScraperAPI {
        
         System.out.println("Cryptos: " + cmc.getGlobalStats().getNumberOfCryptoCurrencies() + " | Markets: "  + cmc.getGlobalStats().getNumberOfMarkets());
 //        
-//        for(TopXCoinsListEntry entry : cmc.getCoinList()){
+//        for(Top100CoinsListEntry entry : cmc.getCoinList()){
 //            System.out.println(entry.getCoinName() + " " + entry.getPrice());
 //        }
     }
     
-    public static void p(String s){System.out.println(s);}
+    public static void p(Object s){System.out.println(s);}
     
 }
