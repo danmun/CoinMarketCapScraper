@@ -18,7 +18,7 @@ public class CMCScraperAPI {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        CoinMarketCap cmc = CoinMarketCap.browse();
+        CoinMarketCap cmc = CoinMarketCap.browseFrontPage();
         Coin coin = cmc.getTop100CoinList()[5].getCoin();
         p(cmc.getTop100CoinList().length);
         p("-----#" + coin.getRank() + "--------" + coin.getName() + "----------------");

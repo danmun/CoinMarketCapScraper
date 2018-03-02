@@ -56,7 +56,7 @@ public class CoinMarketCap {
         this.facebook = facebook;
     }
     
-    public static CoinMarketCap browse() throws IOException{
+    public static CoinMarketCap browseFrontPage() throws IOException{
         return browse(1);
     }
     
