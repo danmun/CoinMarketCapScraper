@@ -18,10 +18,12 @@ public class Scraper {
     private static int timeout = 600000;
     
     public static Document scrapeHTML(String URL) throws IOException{
+        RateLimiter.check();
         return Jsoup.connect(URL).maxBodySize(0).timeout(timeout).get();
     }
     
     public static String scrapeOther(String URL) throws IOException{
+        RateLimiter.check();
         return Jsoup.connect(URL).ignoreContentType(true).execute().body();
     }
     
